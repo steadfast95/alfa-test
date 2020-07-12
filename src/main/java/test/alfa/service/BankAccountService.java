@@ -30,7 +30,6 @@ public class BankAccountService {
     private static final String ACTIVE_ACCOUNTS = "active";
     private static final String CLOSED_ACCOUNTS = "closed";
 
-
     @Autowired(required = false)
     private BankAccountConfig config;
 

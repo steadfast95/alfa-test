@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
@@ -16,18 +16,18 @@ import java.math.BigDecimal;
 @Configuration
 @Validated
 @ConfigurationProperties(prefix = "custom.default-values")
-@ConditionalOnProperty(value = "enable-default-values", havingValue = "true")
+@ConditionalOnProperty(value = "custom.enable-default-values", havingValue = "true")
 public class BankAccountConfig {
 
-    @NotEmpty
+    @NotNull
     private boolean forceUpdate;
 
-    @NotEmpty
+    @NotNull
     private BigDecimal balance;
 
-    @NotEmpty
+    @NotNull
     private String currency;
 
-    @NotEmpty
+    @NotNull
     private boolean active;
 }
