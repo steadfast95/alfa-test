@@ -81,7 +81,7 @@ public class BankAccountService {
         return saveAndReturn(bankAccount);
     }
 
-    public AccountView debitOperation(String accountNumber, BigDecimal amount){
+    public AccountView debitOperation(String accountNumber, BigDecimal amount) {
         var bankAccount = repository.findByAccountNumber(accountNumber).orElseThrow(BankAccountNotFoundException::new);
         bankAccount.setBalance(bankAccount.getBalance().add(amount));
         return saveAndReturn(bankAccount);
