@@ -20,9 +20,6 @@ import java.math.BigDecimal;
 public class BankAccountConfig {
 
     @NotNull
-    private boolean forceUpdate;
-
-    @NotNull
     private BigDecimal balance;
 
     @NotNull
