@@ -20,12 +20,12 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name = "bank_account_tab")
-@Accessors(chain = true)
-@Builder
 @Data
-@EqualsAndHashCode(of = {"id", "accountNumber"})
+@Builder
+@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = {"id", "accountNumber"})
 public class BankAccount {
 
     @Id
@@ -43,7 +43,7 @@ public class BankAccount {
     /**
      * Фактический баланс
      */
-    @Column(name = "balance",nullable = false)
+    @Column(name = "balance", nullable = false)
     private BigDecimal balance;
 
     /**
@@ -53,3 +53,4 @@ public class BankAccount {
     private String currency;
 
 }
+
