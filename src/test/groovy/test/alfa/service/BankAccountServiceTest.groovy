@@ -8,10 +8,15 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.junit.jupiter.SpringExtension
+import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import spock.lang.Specification
 import test.alfa.TestApp
 import test.alfa.model.db.BankAccount
 import test.alfa.repository.BankAccountRepository
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 
 /**
  * @author a.trofimov 12.07.2020
@@ -22,6 +27,9 @@ import test.alfa.repository.BankAccountRepository
 @ExtendWith(SpringExtension.class)
 @AutoConfigureTestDatabase
 class BankAccountServiceTest extends Specification {
+
+    @Autowired
+    private MockMvc mockMvc
 
     @Autowired
     private BankAccountService bankAccountService;
@@ -189,6 +197,15 @@ class BankAccountServiceTest extends Specification {
 
         then:
         new BigDecimal(result.getBalance()).compareTo(expectedBalance) == 0
+    }
+
+    def "test mvc create "(){
+        given:
+        def url = "/alfa-test/accounts/create"
+        expect:
+            mockMvc.perform(MockMvcRequestBuilders.put(url))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(jsonPath('$.response.accountNumber').exists())
     }
 
     def "сохранение"(BankAccount... bankAccounts) {
