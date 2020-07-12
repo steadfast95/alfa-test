@@ -3,7 +3,6 @@ spring.jpa.properties.hibernate.show-sql: true
 custom:
   enable-default-values: true
   default-values:
-    force-update: true
     balance: 100
     currency: USD
     active: true

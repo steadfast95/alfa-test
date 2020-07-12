@@ -1,24 +1,18 @@
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+для запуска ./gradlew bootRun или java -jar alfa-0.0.1-SNAPSHOT.jar 
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.3.1.RELEASE/gradle-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.3.1.RELEASE/gradle-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.3.1.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.3.1.RELEASE/reference/htmlsingle/#boot-features-jpa-and-spring-data)
+### приложения есть небольшой конфиг( опциональный)
+* Для включения использования конфига, необходимо использовать custom.enable-default-values: true
+* При включеном конфиге дефолтные значения будут братся из него:
+     1. balance - стартовый баланс
+     2. currency - валюта счета
+     3. active - статус счета( true - активный/ false - не активный)
+### Всего доступно 5 ендпоинтов в api
+    1. PUT alfa-test/accounts/create - создание счета 
+    2. POST alfa-test/accounts/close - закрытие счета
+    3. POST alfa-test/accounts/credit - списание
+    4. POST alfa-test/accounts/debit - пополнение
+    5. GET alfa-test/accounts/{condition}, под condition принимаются значения all,active,closed
 
-### Guides
-The following guides illustrate how to use some features concretely:
-
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-
-### Additional Links
-These additional references should also help you:
-
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
-
+### Ответы всех запросов приходят в формате {"body" : object}
