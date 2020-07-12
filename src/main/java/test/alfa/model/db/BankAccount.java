@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,6 +36,7 @@ public class BankAccount {
      * Номер счета
      */
     @Column(name = "account_number", nullable = false)
+    @Length(min = 10, max = 10, message = "applied length is only 10 numbers")
     private String accountNumber;
 
     @Column(name = "active", nullable = false)
